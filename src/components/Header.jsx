@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,15 +9,13 @@ import { FaBurger } from "react-icons/fa6";
 import { CiUser, CiSearch, CiHeart, CiShoppingBasket } from "react-icons/ci";
 import { HiMenu, HiX } from "react-icons/hi";
 
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import AuthModal from "./AuthModal";
 
 import { toast } from "react-toastify";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [registerOpen, setRegisterOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -229,7 +226,7 @@ export default function Header() {
               <button
                 onClick={() => {
                   if (!loggedInUser) {
-                    setLoginOpen(true);
+                    setAuthOpen(true);
                   } else {
                     setUserOpen((p) => !p);
                   }
@@ -592,13 +589,7 @@ export default function Header() {
       </AnimatePresence>
 
       {/* MODALS */}
-      <AnimatePresence>
-        {loginOpen && <Login onClose={() => setLoginOpen(false)} />}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {registerOpen && <Register onClose={() => setRegisterOpen(false)} />}
-      </AnimatePresence>
+      <AuthModal open={authOpen} setOpen={setAuthOpen} />
 
       {/* STYLES */}
       <style>{`
