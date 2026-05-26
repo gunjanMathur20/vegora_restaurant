@@ -1,33 +1,56 @@
 
+// ======================================================
+// IMPORTS
+// ======================================================
 
+// Framer Motion animations
 import { motion } from "framer-motion";
+
+// React Router link
 import { Link } from "react-router-dom";
 
-/* 🔥 BACKGROUND SLIDE VARIANTS */
+// ======================================================
+// BACKGROUND SLIDE ANIMATION VARIANTS
+// ======================================================
+
 const bgVariants = {
+  // INITIAL STATE
   initial: (dir) => ({
     opacity: 0,
+
+    // SLIDE FROM LEFT / RIGHT
     x: dir === "right" ? 80 : -80,
   }),
 
+  // ACTIVE STATE
   animate: {
     opacity: 1,
     x: 0,
   },
 
+  // EXIT STATE
   exit: (dir) => ({
     opacity: 0,
+
+    // EXIT OPPOSITE DIRECTION
     x: dir === "right" ? -80 : 80,
   }),
 };
 
-/* ✨ TEXT VARIANTS */
+// ======================================================
+// TEXT ANIMATION VARIANTS
+// ======================================================
+
 const textVariants = {
+  // INITIAL STATE
   initial: (isMobile) => ({
     opacity: 0,
+
+    // SMALLER ANIMATION ON MOBILE
     y: isMobile ? 25 : 60,
   }),
 
+  // ACTIVE STATE
   animate: {
     opacity: 1,
     y: 0,
@@ -40,6 +63,7 @@ const textVariants = {
     },
   },
 
+  // EXIT STATE
   exit: {
     opacity: 0,
     y: -15,
@@ -51,13 +75,18 @@ const textVariants = {
   },
 };
 
-/* 🔥 BUTTON VARIANTS */
+// ======================================================
+// BUTTON ANIMATION
+// ======================================================
+
 const buttonVariants = {
+  // INITIAL STATE
   initial: {
     opacity: 0,
     y: 20,
   },
 
+  // ACTIVE STATE
   animate: {
     opacity: 1,
     y: 0,
@@ -70,11 +99,20 @@ const buttonVariants = {
   },
 };
 
+// ======================================================
+// MAIN COMPONENT
+// ======================================================
+
 export default function BannerSlide({ slide }) {
+  // GET TEXT POSITION FROM SLIDE DATA
   const { textPosition } = slide;
 
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < 768;
+  // CHECK MOBILE SCREEN
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  // ======================================================
+  // JSX
+  // ======================================================
 
   return (
     <motion.div
@@ -94,10 +132,16 @@ export default function BannerSlide({ slide }) {
         backgroundPosition: "center",
       }}
     >
-      {/* OVERLAY */}
+      {/* ======================================================
+          DARK OVERLAY
+      ====================================================== */}
+
       <div className="absolute inset-0 bg-black/60" />
 
-      {/* GREEN + YELLOW GLOW */}
+      {/* ======================================================
+          GREEN + YELLOW GLOW EFFECT
+      ====================================================== */}
+
       <div
         className="
           absolute inset-0
@@ -108,7 +152,10 @@ export default function BannerSlide({ slide }) {
         "
       />
 
-      {/* CONTENT */}
+      {/* ======================================================
+          CONTENT SECTION
+      ====================================================== */}
+
       <motion.div
         custom={isMobile}
         variants={textVariants}
@@ -117,8 +164,11 @@ export default function BannerSlide({ slide }) {
         exit="exit"
         className={`
           relative z-20
-          container px-6 md:px-16
-          text-white max-w-2xl
+          container
+          px-6 md:px-16
+
+          text-white
+          max-w-2xl
 
           ${
             textPosition === "right"
@@ -127,11 +177,18 @@ export default function BannerSlide({ slide }) {
           }
         `}
       >
-        {/* SUBTITLE */}
+        {/* ======================================================
+            SUBTITLE
+        ====================================================== */}
+
         <p
           className="
-            uppercase tracking-[5px]
-            text-sm mb-4
+            uppercase
+            tracking-[5px]
+
+            text-sm
+            mb-4
+
             text-lime-300
             font-semibold
           "
@@ -139,30 +196,45 @@ export default function BannerSlide({ slide }) {
           {slide.subtitle}
         </p>
 
-        {/* TITLE */}
+        {/* ======================================================
+            TITLE
+        ====================================================== */}
+
         <h1
           className="
-            text-4xl md:text-6xl
-            font-bold leading-tight
+            text-4xl
+            md:text-6xl
+
+            font-bold
+            leading-tight
           "
         >
-          <span className="text-white">
-            {slide.title}
-          </span>
+          <span className="text-white">{slide.title}</span>
         </h1>
 
-        {/* DESCRIPTION */}
+        {/* ======================================================
+            DESCRIPTION
+        ====================================================== */}
+
         <p
           className="
-            mt-5 text-gray-200
-            text-sm md:text-base
+            mt-5
+
+            text-gray-200
+
+            text-sm
+            md:text-base
+
             leading-relaxed
           "
         >
           {slide.description}
         </p>
 
-        {/* BUTTON */}
+        {/* ======================================================
+            BUTTON
+        ====================================================== */}
+
         <motion.div
           variants={buttonVariants}
           initial="initial"
@@ -171,19 +243,22 @@ export default function BannerSlide({ slide }) {
           <Link to={slide.link}>
             <button
               className="
-                mt-8 px-8 py-3
+                mt-8
+                px-8 py-3
 
                 bg-lime-400
                 text-black
 
                 font-bold
+
                 tracking-[3px]
                 text-sm
 
                 hover:bg-yellow-300
                 hover:scale-105
 
-                transition-all duration-300
+                transition-all
+                duration-300
 
                 shadow-lg
                 shadow-lime-400/30

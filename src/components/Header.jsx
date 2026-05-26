@@ -494,11 +494,11 @@ export default function Header() {
                 damping: 22,
               }}
               className="
-          fixed top-0 left-0 
-          w-[85%] max-w-[340px] h-full 
-          z-[999] 
+          fixed top-0 left-0
+          w-[85%] max-w-[340px] h-full
+          z-[999]
           bg-gradient-to-b from-[#0f1d16] via-[#0b1410] to-[#060b08]
-          border-r border-lime-300/10 
+          border-r border-lime-300/10
           shadow-[0_0_40px_rgba(163,230,53,0.08)]
           flex flex-col
         "
@@ -518,10 +518,10 @@ export default function Header() {
                 <button
                   onClick={() => setOpen(false)}
                   className="
-              w-9 h-9 rounded-lg 
-              bg-white/5 border border-white/10 
-              flex items-center justify-center 
-              hover:bg-lime-400/10 hover:scale-105 
+              w-9 h-9 rounded-lg
+              bg-white/5 border border-white/10
+              flex items-center justify-center
+              hover:bg-lime-400/10 hover:scale-105
               transition-all duration-200
             "
                 >
@@ -543,12 +543,12 @@ export default function Header() {
                       to={item.path}
                       onClick={() => setOpen(false)}
                       className="
-                  block px-4 py-3 
-                  rounded-xl 
-                  text-white/80 
+                  block px-4 py-3
+                  rounded-xl
+                  text-white/80
                   font-medium tracking-wide
-                  hover:text-lime-300 
-                  hover:bg-white/5 
+                  hover:text-lime-300
+                  hover:bg-white/5
                   hover:shadow-[0_0_15px_rgba(163,230,53,0.08)]
                   transition-all duration-200
                 "
@@ -623,3 +623,7 @@ export default function Header() {
     </>
   );
 }
+
+
+
+

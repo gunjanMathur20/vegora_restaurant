@@ -1,4 +1,6 @@
 export default function OrdersTab() {
+
+  // Recent order data
   const orders = [
     {
       id: "#VG1024",
@@ -16,11 +18,15 @@ export default function OrdersTab() {
   ];
 
   return (
+    // Orders tab container
     <div>
+
+      {/* Section heading */}
       <h2 className="text-2xl font-black">
         Recent Orders
       </h2>
 
+      {/* Orders list */}
       <div className="space-y-4 mt-6">
 
         {orders.map((order) => (
@@ -30,6 +36,7 @@ export default function OrdersTab() {
           >
             <div className="flex items-center justify-between flex-wrap gap-4">
 
+              {/* Order details */}
               <div>
                 <h3 className="font-bold text-lg">
                   {order.item}
@@ -40,12 +47,15 @@ export default function OrdersTab() {
                 </p>
               </div>
 
+              {/* Order price and status */}
               <div className="flex items-center gap-5">
 
+                {/* Order price */}
                 <span className="text-lime-300 font-bold">
                   {order.price}
                 </span>
 
+                {/* Order status button */}
                 <button className="px-5 py-2 rounded-xl bg-lime-400 text-black font-bold">
                   {order.status}
                 </button>

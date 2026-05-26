@@ -5,8 +5,11 @@ import { MdSupportAgent } from "react-icons/md";
 import { FaShieldAlt } from "react-icons/fa";
 
 export default function Features() {
+
+  // Reference for mobile horizontal scroll container
   const scrollRef = useRef(null);
 
+  // Feature data list
   const data = [
     {
       icon: FaShippingFast,
@@ -31,9 +34,11 @@ export default function Features() {
   ];
 
   return (
+
+    // Features section wrapper
     <section className="relative bg-[#07110a] py-24 text-white overflow-hidden">
 
-      {/* SOFT BACKGROUND */}
+      {/* BACKGROUND GRID EFFECT */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div
           className="w-full h-full"
@@ -47,13 +52,15 @@ export default function Features() {
 
       <div className="container mx-auto px-6 relative z-10">
 
-        {/* ================= TITLE ================= */}
+        {/* SECTION TITLE */}
         <div className="text-center mb-14">
 
+          {/* Badge */}
           <div className="inline-block px-5 py-2 border border-lime-400/20 bg-lime-400/10 text-lime-300 text-[11px] tracking-[4px] uppercase">
             Why Choose Us
           </div>
 
+          {/* Heading */}
           <h2 className="mt-5 text-3xl md:text-5xl font-black">
             Premium <span className="text-lime-300">Features</span>
           </h2>
@@ -63,178 +70,84 @@ export default function Features() {
         {/* ================= DESKTOP GRID ================= */}
         <div className="hidden lg:grid gap-8 lg:grid-cols-4">
 
-          {data.map((item, i) => (
-            <div
-              key={i}
-              className="
-                group
-                relative
-                p-7
-                text-center
-                bg-gradient-to-b
-                from-[#101d14]
-                to-[#08120b]
-                border
-                border-lime-400/10
-                transition-all
-                duration-500
-                hover:-translate-y-2
-                hover:border-lime-400/30
-                overflow-hidden
-              "
-            >
+          {data.map((item, i) => {
 
-              {/* ICON */}
-              <div className="
-                mx-auto
-                mb-6
-                flex
-                h-14
-                w-14
-                items-center
-                justify-center
-                rounded-full
-                bg-[#132218]
-                text-lime-300
-                border
-                border-lime-400/10
-                transition-all
-                duration-300
-                group-hover:bg-lime-400/10
-                group-hover:border-lime-400/30
-              ">
-                <item.icon className="text-2xl" />
+            // Dynamic icon component
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={i}
+                className="group relative p-7 text-center bg-gradient-to-b from-[#101d14] to-[#08120b] border border-lime-400/10 transition-all duration-500 hover:-translate-y-2 hover:border-lime-400/30 overflow-hidden"
+              >
+
+                {/* ICON WRAPPER */}
+                <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#132218] text-lime-300 border border-lime-400/10 transition-all duration-300 group-hover:bg-lime-400/10 group-hover:border-lime-400/30">
+                  <Icon className="text-2xl" />
+                </div>
+
+                {/* TITLE BADGE */}
+                <div className="inline-block px-3 py-1 mb-3 border border-lime-400/10 bg-[#0d1710] text-[11px] tracking-[3px] uppercase rounded-md text-lime-200">
+                  {item.title}
+                </div>
+
+                {/* DESCRIPTION */}
+                <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition">
+                  {item.desc}
+                </p>
+
+                {/* BOTTOM HOVER LINE */}
+                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-lime-400 group-hover:w-full transition-all duration-700" />
+
               </div>
-
-              {/* TITLE BOX */}
-              <div className="
-                inline-block
-                px-3
-                py-1
-                mb-3
-                border
-                border-lime-400/10
-                bg-[#0d1710]
-                text-[11px]
-                tracking-[3px]
-                uppercase
-                rounded-md
-                text-lime-200
-              ">
-                {item.title}
-              </div>
-
-              {/* DESC */}
-              <p className="
-                text-sm
-                text-gray-400
-                leading-relaxed
-                group-hover:text-gray-300
-                transition
-              ">
-                {item.desc}
-              </p>
-
-              {/* BOTTOM LINE */}
-              <div className="
-                absolute
-                bottom-0
-                left-0
-                h-[2px]
-                w-0
-                bg-lime-400
-                group-hover:w-full
-                transition-all
-                duration-700
-              " />
-            </div>
-          ))}
+            );
+          })}
 
         </div>
 
         {/* ================= MOBILE SWIPE ================= */}
         <div className="lg:hidden">
 
+          {/* Horizontal scroll container */}
           <div
             ref={scrollRef}
-            className="
-              flex
-              overflow-x-auto
-              snap-x
-              snap-mandatory
-              gap-4
-              scroll-smooth
-              [&::-webkit-scrollbar]:hidden
-            "
+            className="flex overflow-x-auto snap-x snap-mandatory gap-4 scroll-smooth [&::-webkit-scrollbar]:hidden"
           >
 
-            {data.map((item, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 w-[80%] sm:w-[60%] snap-start"
-              >
+            {data.map((item, i) => {
 
-                <div className="
-                  relative
-                  p-7
-                  text-center
-                  bg-gradient-to-b
-                  from-[#101d14]
-                  to-[#08120b]
-                  border
-                  border-lime-400/10
-                  overflow-hidden
-                ">
+              // Dynamic icon component
+              const Icon = item.icon;
 
-                  {/* ICON */}
-                  <div className="
-                    mx-auto
-                    mb-5
-                    flex
-                    h-14
-                    w-14
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#132218]
-                    text-lime-300
-                    border
-                    border-lime-400/10
-                  ">
-                    <item.icon className="text-2xl" />
+              return (
+                <div
+                  key={i}
+                  className="flex-shrink-0 w-[80%] sm:w-[60%] snap-start"
+                >
+
+                  {/* Mobile feature card */}
+                  <div className="relative p-7 text-center bg-gradient-to-b from-[#101d14] to-[#08120b] border border-lime-400/10 overflow-hidden">
+
+                    {/* ICON */}
+                    <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#132218] text-lime-300 border border-lime-400/10">
+                      <Icon className="text-2xl" />
+                    </div>
+
+                    {/* TITLE */}
+                    <div className="inline-block px-3 py-1 mb-3 border border-lime-400/10 bg-[#0d1710] text-[11px] tracking-[3px] uppercase rounded-md text-lime-200">
+                      {item.title}
+                    </div>
+
+                    {/* DESCRIPTION */}
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {item.desc}
+                    </p>
+
                   </div>
-
-                  {/* TITLE BOX */}
-                  <div className="
-                    inline-block
-                    px-3
-                    py-1
-                    mb-3
-                    border
-                    border-lime-400/10
-                    bg-[#0d1710]
-                    text-[11px]
-                    tracking-[3px]
-                    uppercase
-                    rounded-md
-                    text-lime-200
-                  ">
-                    {item.title}
-                  </div>
-
-                  {/* DESC */}
-                  <p className="
-                    text-sm
-                    text-gray-400
-                    leading-relaxed
-                  ">
-                    {item.desc}
-                  </p>
 
                 </div>
-
-              </div>
-            ))}
+              );
+            })}
 
           </div>
 

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 
+// Available payment methods
 const methods = [
   {
     id: "cod",
@@ -18,13 +19,18 @@ const methods = [
   },
 ];
 
-export default function PaymentMethods({ paymentMethod, setPaymentMethod }) {
+export default function PaymentMethods({
+  paymentMethod,
+  setPaymentMethod,
+}) {
   return (
+    // Payment methods container with fade-up animation
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-5 sm:p-6"
     >
+      {/* Section heading */}
       <div className="mb-5">
         <h2 className="text-lg sm:text-xl font-bold text-white">
           Payment Method
@@ -35,14 +41,20 @@ export default function PaymentMethods({ paymentMethod, setPaymentMethod }) {
         </p>
       </div>
 
+      {/* Payment method list */}
       <div className="space-y-3">
         {methods.map((method) => {
+          
+          // Check active payment method
           const active = paymentMethod === method.id;
 
           return (
             <button
               key={method.id}
+
+              // Update selected payment method
               onClick={() => setPaymentMethod(method.id)}
+
               className={`
                 w-full text-left
                 rounded-2xl p-4
@@ -56,18 +68,27 @@ export default function PaymentMethods({ paymentMethod, setPaymentMethod }) {
               `}
             >
               <div className="flex items-start justify-between gap-4">
+                
+                {/* Payment method info */}
                 <div>
-                  <h3 className="font-semibold text-white">{method.title}</h3>
+                  <h3 className="font-semibold text-white">
+                    {method.title}
+                  </h3>
 
-                  <p className="text-sm text-gray-400 mt-1">{method.desc}</p>
+                  <p className="text-sm text-gray-400 mt-1">
+                    {method.desc}
+                  </p>
                 </div>
 
+                {/* Active selection indicator */}
                 <div
                   className={`
                     w-5 h-5 rounded-full border-2 mt-1
 
                     ${
-                      active ? "border-lime-300 bg-lime-300" : "border-white/20"
+                      active
+                        ? "border-lime-300 bg-lime-300"
+                        : "border-white/20"
                     }
                   `}
                 />

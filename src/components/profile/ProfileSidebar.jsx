@@ -7,10 +7,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-export default function ProfileSidebar({
-  activeTab,
-  setActiveTab,
-}) {
+export default function ProfileSidebar({ activeTab, setActiveTab }) {
+  // Sidebar navigation tabs
   const tabs = [
     {
       id: "orders",
@@ -44,16 +42,18 @@ export default function ProfileSidebar({
   ];
 
   return (
+    // Sidebar container
     <div className="rounded-[28px] border border-lime-300/10 bg-[#0c1510]/95 p-4">
-
+      {/* Navigation menu */}
       <div className="space-y-2">
-
         {tabs.map((item) => {
+          // Dynamic icon component
           const Icon = item.icon;
 
           return (
             <button
               key={item.id}
+              // Update active tab on click
               onClick={() => setActiveTab(item.id)}
               className={`
                 w-full flex items-center justify-between
@@ -66,11 +66,16 @@ export default function ProfileSidebar({
                 }
               `}
             >
+              {/* Left side content */}
               <div className="flex items-center gap-3">
+                {/* Tab icon */}
                 <Icon className="w-5 h-5" />
+
+                {/* Tab label */}
                 <span>{item.label}</span>
               </div>
 
+              {/* Right arrow icon */}
               <ChevronRight className="w-4 h-4" />
             </button>
           );
